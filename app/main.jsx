@@ -9,6 +9,8 @@ import About from './components/About.jsx'
 
 require('../public/css/style.scss')
 
+localStorage.clear('models')
+
 ReactDOM.render((
   <Router>
     <div>
