@@ -26,4 +26,7 @@ li a:hover {
   background-color: #4CAF50;
 }
 
-body { background-color: lighten(lightgrey, 8%); }
+body { 
+  margin: 0;
+  background-color: lighten(lightgrey, 8%);
+}

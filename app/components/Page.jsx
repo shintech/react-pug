@@ -27,21 +27,23 @@ export default class Home extends React.Component {
 
   render () {
     return pug`
-      table
-        thead
-          tr
-            th.table-header Name
-            th.table-header Attribute
-            th.table-header Created At
-        tbody
-          ${this.state.models.map(model =>
-            pug`
-              tr(key=${model.id})
-                td ${model.name}
-                td ${model.attribute}
-                td ${model.created_at}
-              `
-          )}
+      div
+        h1 Example
+        table
+          thead
+            tr
+              th.table-header Name
+              th.table-header Attribute
+              th.table-header Created At
+          tbody
+            ${this.state.models.map(model =>
+              pug`
+                tr(key=${model.id})
+                  td ${model.name}
+                  td ${model.attribute}
+                  td ${model.created_at}
+                `
+            )}
     `
   }
 }
