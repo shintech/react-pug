@@ -6,11 +6,11 @@ nav {
   background-color: #333;
 }
 
-li {
+nav li {
   float: left;
 }
 
-li a {
+nav li a {
   display: block;
   color: white;
   text-align: center;
@@ -18,8 +18,10 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+nav li a:hover {
   background-color: #111;
+  text-decoration: none;
+  color: darken(white, 10%);
 }
 
 .active {
@@ -27,6 +29,11 @@ li a:hover {
 }
 
 body { 
-  margin: 0;
   background-color: lighten(lightgrey, 8%);
+}
+
+.table-header {
+  background-color: lighten(#333, 25%);
+  border: 1px solid white;
+  color: white
 }
