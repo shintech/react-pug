@@ -9,13 +9,13 @@
   display: grid;
   grid-gap: 5px;
   margin: 0;
-  grid-template-columns: 1% 65% auto 1%;
+  grid-template-columns:  65% auto;
   grid-template-rows: auto auto auto;
 }
 
 body { 
   margin: 0;
-  background-color: lighten(lightgrey, 8%);
+  background-color: lighten(lightgrey, 11%);
 }
 
 .active {

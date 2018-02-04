@@ -20,11 +20,12 @@ export default class PageSidebar extends React.Component {
       Modal(show=${this.state.modal} onClose=${this.handleClick}) Content
 
       h1 Sidebar
-      p This is the sidebar.
       hr
       ul
-        li
-          button(onClick=${this.handleClick}) Modal
+        li(onClick=${this.handleClick}) Link
+        li(onClick=${this.handleClick}) Link
+        li(onClick=${this.handleClick}) Link
+        li(onClick=${this.handleClick}) Link
     `
   }
 }
