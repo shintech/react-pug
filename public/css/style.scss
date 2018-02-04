@@ -1,4 +1,16 @@
+#root {
+  width: 100%;
+  display: grid;
+  grid-gap: 5px;
+  margin: 0;
+  grid-template-columns: 1% 65% auto 1%;
+  grid-template-rows: auto auto auto;
+}
+
 nav {
+  grid-column: 1 /span 5;
+  grid-row: 1;
+  
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -6,11 +18,8 @@ nav {
   background-color: #333;
 }
 
-nav li {
-  float: left;
-}
-
 nav li a {
+  float: left;
   display: block;
   color: white;
   text-align: center;
@@ -29,7 +38,40 @@ nav li a:hover {
 }
 
 body { 
+  margin: 0;
   background-color: lighten(lightgrey, 8%);
+}
+
+.page {
+  display: grid;
+
+  grid-column: span 5;
+  grid-row: 2;
+  grid-template-columns: auto 30%; 
+  grid-template-rows: auto;  
+
+}
+
+.content {
+  grid-column: 1;
+  grid-row: 1;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.sidebar {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: right;
+  padding-right: 15px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.sidebar ul {
+  list-style-type: none;
 }
 
 .table-header {
@@ -37,3 +79,4 @@ body {
   border: 1px solid white;
   color: white
 }
+

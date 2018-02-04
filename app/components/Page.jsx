@@ -1,4 +1,5 @@
 import React from 'react'
+import Sidebar from './Sidebar.jsx'
 
 export default class Home extends React.Component {
   constructor (props) {
@@ -28,20 +29,22 @@ export default class Home extends React.Component {
 
   render () {
     return pug`
-    div
-      h1 Example
-      table
-        thead
-          tr
-            th.table-header Name
-            th.table-header Attribute
-            th.table-header Created At
-        tbody
-          each model, index in ${this.state.models}
-            tr(key=index)
-              td= model.name
-              td= model.attribute
-              td= model.created_at
+    .page
+      .content
+        h1 Example
+        table
+          thead
+            tr
+              th.table-header Name
+              th.table-header Attribute
+              th.table-header Created At
+          tbody
+            each model, index in ${this.state.models}
+              tr(key=index)
+                td= model.name
+                td= model.attribute
+                td= model.created_at
+      ${<Sidebar />}
     `
   }
 }

@@ -13,13 +13,11 @@ localStorage.clear('models')
 
 ReactDOM.render((
   <Router>
-    <div>
+    <div id='root'>
       <Route component={Navigation} />
-      <div className='container-fluid'>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/page' component={Page} />
-        <Route exact path='/about' component={About} />
-      </div>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/page' component={Page} />
+      <Route exact path='/about' component={About} />
     </div>
   </Router>
 ), document.getElementById('container'))
