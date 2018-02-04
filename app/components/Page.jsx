@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from './Sidebar.jsx'
+import Sidebar from './Sidebar.jsx' // eslint-disable-line
 
 export default class Home extends React.Component {
   constructor (props) {
@@ -44,7 +44,7 @@ export default class Home extends React.Component {
                 td= model.name
                 td= model.attribute
                 td= model.created_at
-      ${<Sidebar />}
+      Sidebar
     `
   }
 }

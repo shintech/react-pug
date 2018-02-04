@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from './Sidebar.jsx'
+import Sidebar from './Sidebar.jsx' // eslint-disable-line
 
 export default class Home extends React.Component {
   render () {
@@ -11,7 +11,7 @@ export default class Home extends React.Component {
         hr
         p All of the content for the About page belongs here!!!
         a(href='#' role='button') Learn more
-      ${<Sidebar />}
+      Sidebar
     `
   }
 }
