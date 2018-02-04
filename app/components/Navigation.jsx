@@ -17,13 +17,13 @@ export default class Navigation extends React.Component {
 
   render () {
     return pug`
-      nav
-        li
-          a(className=${this.state.activeClassName === '#/' ? 'active' : null} href='#/') home
-        li
-          a(className=${this.state.activeClassName === '#/page' ? 'active' : null} href='#/page') page 
-        li
-          a(className=${this.state.activeClassName === '#/about' ? 'active' : null} href='#/about') about               
+    nav
+      li
+        a(className=${this.state.activeClassName === '#/' ? 'active' : null} href='#/') home
+      li
+        a(className=${this.state.activeClassName === '#/page' ? 'active' : null} href='#/page') page
+      li
+        a(className=${this.state.activeClassName === '#/about' ? 'active' : null} href='#/about') about
     `
   }
 }
