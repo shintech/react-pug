@@ -7,6 +7,7 @@ import Home from './components/Home.jsx'
 import Page from './components/Page.jsx'
 import About from './components/About.jsx'
 import Sidebar from './components/Sidebar.jsx'
+import Footer from './components/Footer.jsx'
 
 require('../public/css/index.scss')
 
@@ -48,7 +49,7 @@ class Main extends React.Component {
             <Route exact path='/about' component={About} />
             {sidebar}
           </div>
-          <div className='footer'>Footer</div>
+          <Footer message='shintech.ninja' />
         </div>
       </Router>
     )

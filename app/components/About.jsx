@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from './Sidebar.jsx' // eslint-disable-line
 
-export default class Home extends React.Component {
+export default class extends React.Component {
   render () {
     return pug`
     .page

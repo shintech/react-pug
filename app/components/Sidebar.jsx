@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from './Modal.jsx' // eslint-disable-line
 
-export default class PageSidebar extends React.Component {
+export default class extends React.Component {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)

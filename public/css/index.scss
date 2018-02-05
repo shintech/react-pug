@@ -1,10 +1,10 @@
-@import 'sidebar';
-@import 'content';
-@import 'navbar';
-@import 'modal';
-@import 'table';
-@import 'footer';
-@import 'main-view';
+@import 'components/sidebar';
+@import 'components/content';
+@import 'components/navbar';
+@import 'components/modal';
+@import 'components/table';
+@import 'components/footer';
+@import 'components/main-view';
 
 #root {
   width: 100%;
@@ -12,7 +12,7 @@
   grid-gap: 5px;
   margin: 0;
   grid-template-columns:  auto;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto;
 }
 
 body { 
