@@ -5,25 +5,30 @@ export default class Navigation extends React.Component {
     super(props)
 
     this.state = {
-      activeClassName: `#${props.location.pathname}`
+      mediaId: false,
+      active: window.location.hash
     }
 
     window.onhashchange = (e) => {
       this.setState({
-        activeClassName: window.location.hash
+        active: window.location.hash
       })
     }
   }
 
   render () {
+    let active = this.state.active
+
     return pug`
     nav
       li
-        a(className=${this.state.activeClassName === '#/' ? 'active' : null} href='#/') home
+        a(className=${active === '#/' ? 'active' : null} href='#/') home
       li
-        a(className=${this.state.activeClassName === '#/page' ? 'active' : null} href='#/page') page
+        a(className=${active === '#/page' ? 'active' : null} href='#/page') page
       li
-        a(className=${this.state.activeClassName === '#/about' ? 'active' : null} href='#/about') about
+        a(className=${active === '#/about' ? 'active' : null} href='#/about') about
+      li
+        a.openSidebar(onClick=${this.props.openNav} data-show=false) sidebar
     `
   }
 }

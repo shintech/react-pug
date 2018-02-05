@@ -5,13 +5,12 @@ export default class PageSidebar extends React.Component {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
-    this.state = { modal: false }
-  }
+    this.closeNav = this.closeNav.bind(this)
 
-  handleClick () {
-    this.setState({
-      modal: !this.state.modal
-    })
+    this.state = {
+      modal: false,
+      sidebar: this.props.sidebar
+    }
   }
 
   render () {
@@ -27,5 +26,15 @@ export default class PageSidebar extends React.Component {
         li(onClick=${this.handleClick}) Link
         li(onClick=${this.handleClick}) Link
     `
+  }
+
+  handleClick () {
+    this.setState({
+      modal: !this.state.modal
+    })
+  }
+
+  closeNav () {
+    this.state.sidebar = null
   }
 }

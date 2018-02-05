@@ -1,15 +1,17 @@
 @import 'sidebar';
-@import 'page';
+@import 'content';
 @import 'navbar';
 @import 'modal';
 @import 'table';
+@import 'footer';
+@import 'main-view';
 
 #root {
   width: 100%;
   display: grid;
   grid-gap: 5px;
   margin: 0;
-  grid-template-columns:  65% auto;
+  grid-template-columns:  auto;
   grid-template-rows: auto auto auto;
 }
 

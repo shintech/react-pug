@@ -1,5 +1,5 @@
 nav {
-  grid-column: 1 /span 5;
+  grid-column: 1;
   grid-row: 1;
   
   list-style-type: none;
@@ -16,6 +16,11 @@ nav li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+nav li a.openSidebar {
+  float: right;
+  cursor: pointer;
 }
 
 nav li a:hover {

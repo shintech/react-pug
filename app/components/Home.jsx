@@ -12,7 +12,6 @@ export default class Home extends React.Component {
         hr
         p All of the content for the Home page belongs here!!!
         a(href='#' role='button') Learn more
-      Sidebar
     `
   }
 }
