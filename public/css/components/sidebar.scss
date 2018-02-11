@@ -25,7 +25,16 @@
 }
 
 .sidebar li:hover {
-  background-color: #111;
-  color: darken(white, 10%);
+  background-color: #4CAF50;
+  color: black;
   cursor: pointer;
+}
+
+.sidebar li.toggle-nav {
+  background-color: black;
+  color: white;
+}
+.sidebar li.toggle-nav:hover {
+  background-color: #4CAF50;
+  color: black;
 }

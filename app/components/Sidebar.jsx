@@ -16,21 +16,19 @@ export default class extends React.Component {
     .sidebar
       Modal(show=${this.state.modal} onClose=${this.handleClick})
 
-      h1 Menu
+      h2 Menu
       hr
       
-      ul
-        li(onClick=${this.handleClick}) Link
-        li(onClick=${this.handleClick}) Link
-        li(onClick=${this.handleClick}) Link
-        li(onClick=${this.handleClick}) Link
-        
-      button(onClick=${this.props.toggleNav}) Close
-        
+      nav
+        li(onClick=${this.handleClick}) menu item
+        li(onClick=${this.handleClick}) menu item
+        li(onClick=${this.handleClick}) menu item
+        li(onClick=${this.handleClick}) menu item
+        li.toggle-nav(onClick=${this.props.toggleNav}) close
     `
   }
 
-  handleClick (e) {
+  handleClick () {
     this.setState({
       modal: !this.state.modal
     })

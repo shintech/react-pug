@@ -26,7 +26,6 @@ class Main extends React.Component {
   }
 
   toggleNav (e) {
-    e.preventDefault()
     this.setState({ sidebar: !this.state.sidebar })
   }
 

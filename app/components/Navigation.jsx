@@ -5,7 +5,6 @@ export default class extends React.Component {
     super(props)
 
     this.state = {
-      mediaId: false,
       active: window.location.hash
     }
 
@@ -21,14 +20,10 @@ export default class extends React.Component {
 
     return pug`
     nav
-      li
-        a(className=${active === '#/' ? 'active' : null} href='#/') home
-      li
-        a(className=${active === '#/page' ? 'active' : null} href='#/page') page
-      li
-        a(className=${active === '#/about' ? 'active' : null} href='#/about') about
-      li
-        a.openSidebar(onClick=${this.props.toggleNav} data-show=false) menu
+      li: a(className=${active === '#/' ? 'active' : null} href='#/') home
+      li: a(className=${active === '#/page' ? 'active' : null} href='#/page') page
+      li: a(className=${active === '#/about' ? 'active' : null} href='#/about') about
+      li: a.openSidebar(onClick=${this.props.toggleNav} data-show=false) menu
     `
   }
 }
