@@ -17,32 +17,32 @@ class Main extends React.Component {
   constructor (props) {
     super(props)
 
-    this.openNav = this.openNav.bind(this)
+    this.toggleNav = this.toggleNav.bind(this)
     this.navigationBar = this.navigationBar.bind(this)
 
     this.state = {
-      sidebar: null
+      sidebar: false
     }
   }
 
-  openNav (e) {
+  toggleNav (e) {
     e.preventDefault()
     this.setState({ sidebar: !this.state.sidebar })
   }
 
   navigationBar () {
     return (
-      <Navigation openNav={this.openNav} />
+      <Navigation toggleNav={this.toggleNav} />
     )
   }
 
   render () {
-    let sidebar = this.state.sidebar ? <Sidebar sidebar={this.state.sidebar} /> : null
+    let sidebar = this.state.sidebar ? <Sidebar sidebar={this.state.sidebar} toggleNav={this.toggleNav} /> : null
 
     return (
       <Router>
         <div id='root'>
-          <Route component={this.navigationBar} openNav={this.openNav} />
+          <Route component={this.navigationBar} />
           <div id='main-view'>
             <Route exact path='/' component={Home} />
             <Route exact path='/page' component={Page} />

@@ -28,7 +28,7 @@ export default class extends React.Component {
       li
         a(className=${active === '#/about' ? 'active' : null} href='#/about') about
       li
-        a.openSidebar(onClick=${this.props.openNav} data-show=false) sidebar
+        a.openSidebar(onClick=${this.props.toggleNav} data-show=false) menu
     `
   }
 }

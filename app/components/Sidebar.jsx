@@ -5,36 +5,34 @@ export default class extends React.Component {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
-    this.closeNav = this.closeNav.bind(this)
 
     this.state = {
-      modal: false,
-      sidebar: this.props.sidebar
+      modal: false
     }
   }
 
   render () {
     return pug`
     .sidebar
-      Modal(show=${this.state.modal} onClose=${this.handleClick}) Content
+      Modal(show=${this.state.modal} onClose=${this.handleClick})
 
-      h1 Sidebar
+      h1 Menu
       hr
+      
       ul
         li(onClick=${this.handleClick}) Link
         li(onClick=${this.handleClick}) Link
         li(onClick=${this.handleClick}) Link
         li(onClick=${this.handleClick}) Link
+        
+      button(onClick=${this.props.toggleNav}) Close
+        
     `
   }
 
-  handleClick () {
+  handleClick (e) {
     this.setState({
       modal: !this.state.modal
     })
-  }
-
-  closeNav () {
-    this.state.sidebar = null
   }
 }
