@@ -3,37 +3,55 @@ export default function (options) {
 
   return {
     one: async function (req, res) {
-      let model
+      let status, message, model
       let modelId = parseInt(req.params.id)
 
       try {
         model = await db.one('select * from models where id = $1', modelId)
+
+        status = 'success'
+        message = `Successfully fetched one model....}`
       } catch (err) {
         logger.error(err.message)
 
-        return res.send('Error loading model from database...')
+        model = null
+        status = 'error'
+        message = 'Error loading model from database...'
       }
 
       res.status(200)
       .json({
-        body: model
+        body: {
+          model: model,
+          status: status,
+          message: message
+        }
       })
     },
 
     all: async function (req, res) {
-      let models
+      let status, message, models
 
       try {
         models = await db.any('select * from models')
+
+        status = 'success'
+        message = `Successfully fetched ${models.length} models...`
       } catch (err) {
         logger.error(err.message)
 
-        return res.send('Error loading models from database...')
+        models = null
+        status = 'error'
+        message = 'Error loading models from database...'
       }
 
       res.status(200)
       .json({
-        body: models
+        body: {
+          models: models,
+          status: status,
+          message: message
+        }
       })
     }
   }

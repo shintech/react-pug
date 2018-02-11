@@ -21,9 +21,13 @@ export default class extends React.Component {
     return fetch('/api/models')
     .then(response => response.json())
     .then(json => {
-      localStorage.setItem('models', JSON.stringify(json.body))
+      let body = json.body
 
-      this.setState({ models: json.body })
+      console.log(body.message)
+
+      localStorage.setItem('models', JSON.stringify(body.models))
+
+      this.setState({ models: body.models })
     })
   }
 

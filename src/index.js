@@ -13,6 +13,7 @@ export function start (options, callback) {
 
   app.get('/', (req, res) => {
     let message = `${res.statusCode}: Success...`
+
     res.status(200)
     .render('index', {
       title: 'Success',
@@ -33,6 +34,7 @@ export function start (options, callback) {
           message: `${res.statusCode}: Not found...`
         })
       },
+
       html: () => {
         res.render('error', {
           title: 'Error',
