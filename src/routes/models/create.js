@@ -5,6 +5,7 @@ export default function (options) {
 
   return async function (req, res) {
     let result, status, message, response
+    options.startTime = Date.now()
 
     try {
       result = await db.one('insert into models(name, attribute)' + 'values( ${name}, ${attribute} ) returning id', req.body) // eslint-disable-line
@@ -27,7 +28,8 @@ export default function (options) {
     .format({
       json: () => {
         res.set(headers(response, options))
-        .send(response)
+        .write(JSON.stringify(response))
+        res.end()
       }
     })
   }

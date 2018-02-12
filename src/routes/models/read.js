@@ -9,6 +9,8 @@ export default function (options) {
 
       let result, status, message, response
 
+      options.startTime = Date.now()
+
       try {
         result = await db.one('select * from models where id = $1', modelId)
         message = `Successfully fetched one model...`
@@ -29,13 +31,16 @@ export default function (options) {
       .format({
         json: () => {
           res.set(headers(response, options))
-          .send(response)
+          .write(JSON.stringify(response))
+
+          res.end()
         }
       })
     },
 
     all: async function (req, res) {
       let results, status, message, response
+      options.startTime = Date.now()
 
       try {
         results = await db.any('select * from models')
@@ -51,12 +56,13 @@ export default function (options) {
       response = {
         body: { results, status, message }
       }
-
       res.status(200)
       .format({
         json: () => {
           res.set(headers(response, options))
-          .send(response)
+          .write(JSON.stringify(response))
+
+          res.end()
         }
       })
     }

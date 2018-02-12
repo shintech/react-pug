@@ -7,6 +7,7 @@ export default function (options) {
     const modelId = parseInt(req.params.id)
 
     let result, status, message, response
+    options.startTime = Date.now()
 
     try {
       result = await db.one('delete from models where id = $1 returning id', modelId)
@@ -29,7 +30,9 @@ export default function (options) {
     .format({
       json: () => {
         res.set(headers(response, options))
-        .send(response)
+        .write(JSON.stringify(response))
+
+        res.end()
       }
     })
   }

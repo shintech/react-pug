@@ -7,6 +7,7 @@ export default function (options) {
     const modelId = parseInt(req.params.id)
 
     let result, message, status, response
+    options.startTime = Date.now()
 
     try {
       result = await db.one('update models set name=$1, attribute=$2 where id=$3 returning id, name, attribute', [req.body.name, req.body.attribute, modelId])
@@ -29,7 +30,9 @@ export default function (options) {
     .format({
       json: () => {
         res.set(headers(response, options))
-        .send(response)
+        .write(JSON.stringify(response))
+
+        res.end()
       }
     })
   }
