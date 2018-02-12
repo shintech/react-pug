@@ -1,56 +1,62 @@
+import { headers } from '../../lib'
+
 export default function (options) {
   const { db, logger } = options
 
   return {
     one: async function (req, res) {
-      let status, message, model
-      let modelId = parseInt(req.params.id)
+      const modelId = parseInt(req.params.id)
+
+      let result, status, message, response
 
       try {
-        model = await db.one('select * from models where id = $1', modelId)
-
+        result = await db.one('select * from models where id = $1', modelId)
+        message = `Successfully fetched one model...`
         status = 'success'
-        message = `Successfully fetched one model....}`
       } catch (err) {
-        logger.error(err.message)
-
-        model = null
         status = 'error'
-        message = 'Error loading model from database...'
+        message = err.message
+
+        logger.error(err.message)
+      }
+
+      response = {
+        body: { result, status, message }
       }
 
       res.status(200)
-      .json({
-        body: {
-          model: model,
-          status: status,
-          message: message
+
+      .format({
+        json: () => {
+          res.set(headers(response, options))
+          .send(response)
         }
       })
     },
 
     all: async function (req, res) {
-      let status, message, models
+      let results, status, message, response
 
       try {
-        models = await db.any('select * from models')
-
+        results = await db.any('select * from models')
         status = 'success'
-        message = `Successfully fetched ${models.length} models...`
+        message = `Successfully fetched ${results.length} models...`
       } catch (err) {
-        logger.error(err.message)
-
-        models = null
         status = 'error'
-        message = 'Error loading models from database...'
+        message = err.message
+
+        logger.error(err.message)
+      }
+
+      response = {
+        body: { results, status, message }
       }
 
       res.status(200)
-      .json({
-        body: {
-          models: models,
-          status: status,
-          message: message
+      .format({
+        json: () => {
+          res.set(headers(response, options))
+          .send(response)
         }
       })
     }

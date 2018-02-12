@@ -30,8 +30,6 @@ INSERT INTO models ( name,attribute )
 VALUES ( 'invoice',71860 );
 INSERT INTO models ( name,attribute )
 VALUES ( 'neutral',65920 );
-INSERT INTO models ( name,attribute )
-VALUES ( 'auxiliary',82100 );
 
 CREATE TABLE users (
   ID SERIAL PRIMARY KEY,
@@ -40,7 +38,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users ( username, password )
-VALUES ( 'mprather', '$2a$10$dbnjt3x9vj4brOcq0qyxyOmhw6XZJV3o5SdFDtDkFs4t1X4KhW46m');
+VALUES ( 'KillBill', '$2a$10$dbnjt3x9vj4brOcq0qyxyOmhw6XZJV3o5SdFDtDkFs4t1X4KhW46m');
 
 ---------------------------------------------------------------------------
 

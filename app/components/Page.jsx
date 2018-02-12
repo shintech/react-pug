@@ -25,9 +25,9 @@ export default class extends React.Component {
 
       console.log(body.message)
 
-      localStorage.setItem('models', JSON.stringify(body.models))
+      localStorage.setItem('models', JSON.stringify(body.results))
 
-      this.setState({ models: body.models })
+      this.setState({ models: body.results })
     })
   }
 

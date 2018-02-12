@@ -1,27 +1,35 @@
+import { headers } from '../../lib'
+
 export default function (options) {
   const { db, logger } = options
 
   return async function (req, res) {
-    let status, message
     const modelId = parseInt(req.params.id)
 
+    let result, message, status, response
+
     try {
-      await db.one('update models set name=$1, attribute=$2 where id=$3 returning id', [req.body.name, req.body.attribute, modelId])
-
+      result = await db.one('update models set name=$1, attribute=$2 where id=$3 returning id, name, attribute', [req.body.name, req.body.attribute, modelId])
       status = 'success'
-      message = `Updated model id: ${modelId}...`
-    } catch (err) {
-      logger.error(err.message)
+      message = `Updated model id: ${result.id}...`
 
+      logger.info(message)
+    } catch (err) {
       status = 'error'
-      message = `Error updating model id: ${modelId}...`
+      message = err.message
+
+      logger.error(err.message)
+    }
+
+    response = {
+      body: { result, status, message }
     }
 
     res.status(200)
-    .json({
-      body: {
-        status: status,
-        message: message
+    .format({
+      json: () => {
+        res.set(headers(response, options))
+        .send(response)
       }
     })
   }

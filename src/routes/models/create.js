@@ -1,26 +1,33 @@
+import { headers } from '../../lib'
+
 export default function (options) {
   const { db, logger } = options
 
   return async function (req, res) {
-    let status, message
+    let result, status, message, response
 
     try {
-      await db.none('insert into models(name, attribute)' + 'values( ${name}, ${attribute} )', req.body) // eslint-disable-line
-
+      result = await db.one('insert into models(name, attribute)' + 'values( ${name}, ${attribute} ) returning id', req.body) // eslint-disable-line
       status = 'success'
-      message = 'Inserted one model...'
-    } catch (err) {
-      logger.error(err.message)
+      message = `Inserted one model; id: ${result.id}...`
 
+      logger.info(`Insterted one model; id: ${result.id}`)
+    } catch (err) {
       status = 'error'
-      message = 'Error creating model...'
+      message = err.message
+
+      logger.error(err.message)
+    }
+
+    response = {
+      body: { result, status, message }
     }
 
     res.status(200)
-    .json({
-      body: {
-        status: status,
-        message: message
+    .format({
+      json: () => {
+        res.set(headers(response, options))
+        .send(response)
       }
     })
   }

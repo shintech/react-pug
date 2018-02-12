@@ -1,27 +1,35 @@
+import { headers } from '../../lib'
+
 export default function (options) {
   const { db, logger } = options
 
   return async function (req, res) {
-    let status, message
-    let modelId = parseInt(req.params.id)
+    const modelId = parseInt(req.params.id)
+
+    let result, status, message, response
 
     try {
-      await db.one('delete from models where id = $1 returning id', modelId)
-
+      result = await db.one('delete from models where id = $1 returning id', modelId)
       status = 'success'
-      message = `Removed model id: ${modelId}...`
-    } catch (err) {
-      logger.error(err.message)
+      message = `Removed model id: ${result.id}...`
 
+      logger.info(`Removed model id: ${result.id}`)
+    } catch (err) {
       status = 'error'
-      message = `Error deleting model id ${modelId}...`
+      message = err.message
+
+      logger.error(err.message)
+    }
+
+    response = {
+      body: { result, status, message }
     }
 
     res.status(200)
-    .json({
-      body: {
-        status: status,
-        message: message
+    .format({
+      json: () => {
+        res.set(headers(response, options))
+        .send(response)
       }
     })
   }
